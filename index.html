@@ -4,11 +4,11 @@
   <meta name="mitgo-verification" content="ccdf774e-db72-466f-bbb8-32d321a14652" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BachatBlink - Blink and Save! Best Online Deals &amp; Offers in India</title>
+  <title>BachatBlink - Blink and Save! Best Online Deals & Offers in India</title>
   <meta name="description" content="Blink and Save! Discover curated lightning deals, massive discounts, and price drops across Amazon, Flipkart, Myntra, AJIO, Meesho, and Croma." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy-dark: #091d3a;
@@ -28,7 +28,7 @@
       --shadow-lg: 0 20px 40px rgba(9, 29, 58, 0.16);
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -52,7 +52,6 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
     }
     .bb-topbar-pill {
       background: linear-gradient(135deg, var(--gold), #ea580c);
@@ -535,7 +534,7 @@
 
   <div id="bb-home">
     <header class="bb-header">
-      <a class="bb-logo" href="./"><img src="./logo.png" alt="BachatBlink - Blink and Save!" /></a>
+      <a class="bb-logo" href="/"><img src="/logo.png" alt="BachatBlink - Blink and Save!" /></a>
       <div class="bb-search">
         <input id="bb-search-input" type="search" placeholder="Search deals, earbuds, trimmers, Amazon, Flipkart..." />
         <button id="bb-search-btn" type="button">Search</button>
@@ -651,7 +650,7 @@
     <footer class="bb-footer">
       <div class="bb-footer-inner">
         <div>
-          <img class="bb-footer-logo" src="./logo.png" alt="BachatBlink - Blink and Save!" />
+          <img class="bb-footer-logo" src="/logo.png" alt="BachatBlink - Blink and Save!" />
           <p>Your daily destination for verified online deals, lightning discounts, and smart shopping across India's leading e-commerce platforms.</p>
           <div class="bb-footer-disclosure">
             <strong>Affiliate Disclosure:</strong> BachatBlink participates in the Amazon Associates Program, Flipkart Affiliate Program, and partner networks. We may earn a commission from qualifying purchases at zero extra cost to you.
@@ -660,8 +659,8 @@
         <div>
           <h4>Explore Deals</h4>
           <div class="bb-footer-links">
-            <a href="./">Home</a>
-            <a href="./about.html">About BachatBlink</a>
+            <a href="/">Home</a>
+            <a href="/about.html">About BachatBlink</a>
             <a href="#bb-trending">Trending Deals</a>
             <a href="#bb-latest-deals">Latest Offers</a>
           </div>
@@ -669,9 +668,9 @@
         <div>
           <h4>Legal &amp; Support</h4>
           <div class="bb-footer-links">
-            <a href="./contact.html">Contact Us</a>
-            <a href="./privacy-policy.html">Privacy Policy</a>
-            <a href="./affiliate-disclosure.html">Affiliate Disclosure</a>
+            <a href="/contact.html">Contact Us</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/affiliate-disclosure.html">Affiliate Disclosure</a>
           </div>
         </div>
       </div>
@@ -684,8 +683,7 @@
 <script>
 (function() {
   "use strict";
-
-  const feedURL = "./data/products.json";
+  const feedURL = "https://google.com";
   const grid = document.getElementById("bb-products-grid");
   const rail = document.getElementById("bb-trending-rail");
   const filterBar = document.getElementById("bb-filter-bar");
@@ -693,68 +691,30 @@
   const searchBtn = document.getElementById("bb-search-btn");
   const topNav = document.getElementById("bb-top-nav");
 
-  let activeType = "all";
-  let activeVal = "all";
-  let allProducts = [];
-
-  function safeText(v, fb) {
-    return (v === null || v === undefined || v === "") ? (fb || "") : String(v);
-  }
-
+  function safeText(v, fb) { return (v === null || v === undefined) ? (fb || "") : String(v); }
   function safeURL(v) {
-    try {
-      const u = new URL(String(v || ""));
-      return (u.protocol === "https:" || u.protocol === "http:") ? u.href : "";
-    } catch (e) {
-      return "";
-    }
+    try { const u = new URL(String(v || "")); return u.protocol === "https:" ? u.href : ""; }
+    catch(e) { return ""; }
   }
-
-  function parsePrice(v) {
-    if (v === "" || v === null || v === undefined) return NaN;
-    const n = Number(String(v).replace(/[^\d.-]/g, ""));
-    return Number.isFinite(n) ? n : NaN;
-  }
-
-  function money(v) {
-    const n = parsePrice(v);
-    return Number.isFinite(n) ? "\u20B9" + n.toLocaleString("en-IN") : "";
-  }
-
-  function el(tag, text, cls) {
-    const node = document.createElement(tag);
-    if (text !== undefined && text !== null) node.textContent = text;
-    if (cls) node.className = cls;
-    return node;
-  }
+  function parsePrice(v) { return (v === "" || v === null || v === undefined) ? NaN : Number(String(v).replace(/[^\d.-]/g, "")); }
+  function money(v) { const n = parsePrice(v); return Number.isFinite(n) ? "\u20B9" + n.toLocaleString("en-IN") : ""; }
+  function el(tag, text, cls) { const e = document.createElement(tag); e.textContent = text; if (cls) e.className = cls; return e; }
 
   function createCard(p) {
     const card = document.createElement("div");
     card.className = "bb-product-card";
-
-    const cur = parsePrice(p.CurrentPrice);
-    const mrp = parsePrice(p.MRP);
-    const vCur = Number.isFinite(cur) && cur > 0;
-    const vMrp = Number.isFinite(mrp) && mrp > 0;
+    const cur = parsePrice(p.CurrentPrice), mrp = parsePrice(p.MRP);
+    const vCur = Number.isFinite(cur) && cur > 0, vMrp = Number.isFinite(mrp) && mrp > 0;
 
     if (vCur && vMrp && mrp > cur) {
-      card.appendChild(
-        el("span", Math.round(((mrp - cur) / mrp) * 100) + "% OFF", "bb-discount-badge")
-      );
+      card.appendChild(el("span", Math.round((mrp - cur) / mrp * 100) + "% OFF", "bb-discount-badge"));
     }
 
     const imgBox = el("div", "", "bb-product-image");
     const imgUrl = safeURL(p.ProductImage);
     if (imgUrl) {
       const img = document.createElement("img");
-      img.src = imgUrl;
-      img.alt = safeText(p.ProductName, "Product");
-      img.loading = "lazy";
-      img.referrerPolicy = "no-referrer";
-      img.onerror = function() {
-        imgBox.innerHTML = "";
-        imgBox.appendChild(el("p", "Image unavailable"));
-      };
+      img.src = imgUrl; img.alt = safeText(p.ProductName, "Product"); img.loading = "lazy"; img.referrerPolicy = "no-referrer";
       imgBox.appendChild(img);
     } else {
       imgBox.appendChild(el("p", "Image unavailable"));
@@ -762,30 +722,22 @@
     card.appendChild(imgBox);
 
     const storeText = safeText(p.Store, "Online Store");
-    const catText = safeText(p.Category, "General");
-    const titleText = safeText(p.ProductName, "Featured Deal");
+    const catText = safeText(p.Category, "Other");
+    const titleText = safeText(p.ProductName, "Product");
 
     card.appendChild(el("div", storeText, "bb-product-store"));
     card.appendChild(el("h3", titleText, "bb-product-title"));
 
     const priceRow = el("div", "", "bb-price-wrap");
     priceRow.appendChild(el("span", vCur ? money(cur) : "Check Deal", "bb-product-price"));
-    if (vMrp && vCur && mrp > cur) {
-      priceRow.appendChild(el("span", money(mrp), "bb-product-mrp"));
-    }
+    if (vMrp && vCur && mrp > cur) priceRow.appendChild(el("span", money(mrp), "bb-product-mrp"));
     card.appendChild(priceRow);
 
-    if (vCur && vMrp && mrp > cur) {
-      card.appendChild(el("p", "You save " + money(mrp - cur), "bb-product-saving"));
-    }
+    if (vCur && vMrp && mrp > cur) card.appendChild(el("p", "✓ You save " + money(mrp - cur), "bb-product-saving"));
 
     const dealURL = safeURL(p.AffiliateURL || p.ProductURL);
     const btn = el("a", dealURL ? "GRAB DEAL →" : "Link unavailable", "bb-buy-button");
-    if (dealURL) {
-      btn.href = dealURL;
-      btn.target = "_blank";
-      btn.rel = "nofollow sponsored noopener noreferrer";
-    }
+    if (dealURL) { btn.href = dealURL; btn.target = "_blank"; btn.rel = "nofollow sponsored noopener noreferrer"; }
     card.appendChild(btn);
 
     card.dataset.category = catText.trim().toLowerCase();
@@ -794,148 +746,35 @@
     return card;
   }
 
-  function applyFilter() {
-    const q = (searchInput && searchInput.value ? searchInput.value : "").trim().toLowerCase();
+  function applyFilter(type, val) {
+    const q = (searchInput.value || "").trim().toLowerCase();
     grid.querySelectorAll(".bb-product-card").forEach(card => {
       const matchType =
-        activeType === "all" ||
-        (activeType === "store" && card.dataset.store.includes(activeVal)) ||
-        (activeType === "category" && card.dataset.category.includes(activeVal));
+        type === "all" ||
+        (type === "store" && card.dataset.store.includes(val)) ||
+        (type === "category" && card.dataset.category === val);
       const matchSearch = !q || card.dataset.search.includes(q);
       card.style.display = (matchType && matchSearch) ? "" : "none";
     });
   }
 
-  function syncActiveButtons(type, val) {
+  let activeType = "all", activeVal = "all";
+
+  function triggerStoreFilter(storeVal) {
     topNav.querySelectorAll("button").forEach(b => {
-      const isMatch =
-        (type === "all" && b.dataset.filterType === "all") ||
-        (b.dataset.filterType === type && b.dataset.filterVal === val);
-      b.classList.toggle("active", isMatch);
+      b.classList.toggle("active", b.dataset.filterType === "store" && b.dataset.filterVal === storeVal);
     });
-    filterBar.querySelectorAll("button").forEach(b => {
-      b.classList.toggle("active", b.dataset.cat === val);
-    });
-  }
-
-  function buildCategoryFilterBar(products) {
-    if (!filterBar) return;
-    filterBar.innerHTML = "";
-
-    const allBtn = el("button", "All Categories", "bb-filter-button active");
-    allBtn.type = "button";
-    allBtn.dataset.cat = "all";
-    allBtn.addEventListener("click", () => {
-      activeType = "all";
-      activeVal = "all";
-      syncActiveButtons("all", "all");
-      applyFilter();
-    });
-    filterBar.appendChild(allBtn);
-
-    const categories = Array.from(
-      new Set(
-        products
-          .map(p => safeText(p.Category, "").trim())
-          .filter(Boolean)
-      )
-    ).slice(0, 10);
-
-    categories.forEach(cat => {
-      const lower = cat.toLowerCase();
-      const btn = el("button", cat, "bb-filter-button");
-      btn.type = "button";
-      btn.dataset.cat = lower;
-      btn.addEventListener("click", () => {
-        activeType = "category";
-        activeVal = lower;
-        syncActiveButtons("category", lower);
-        applyFilter();
-      });
-      filterBar.appendChild(btn);
-    });
-  }
-
-  function renderProducts(products) {
-    allProducts = Array.isArray(products) ? products : [];
-    grid.innerHTML = "";
-    rail.innerHTML = "";
-
-    if (allProducts.length === 0) {
-      const msg = "No products synced yet. Approve your Clickwise programs/feed and run the Sync Affiliate Products workflow.";
-      grid.appendChild(el("p", msg));
-      rail.appendChild(el("p", msg));
-      return;
-    }
-
-    allProducts.slice(0, 12).forEach(p => rail.appendChild(createCard(p)));
-    allProducts.forEach(p => grid.appendChild(createCard(p)));
-    buildCategoryFilterBar(allProducts);
-    applyFilter();
-  }
-
-  // Top navigation filtering
-  topNav.querySelectorAll("button[data-filter-type]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      activeType = btn.dataset.filterType;
-      activeVal = btn.dataset.filterVal;
-      syncActiveButtons(activeType, activeVal);
-      applyFilter();
-    });
-  });
-
-  // Quick store strip filtering
-  document.querySelectorAll("[data-quick-store]").forEach(pill => {
-    pill.addEventListener("click", () => {
-      activeType = "store";
-      activeVal = pill.dataset.quickStore.toLowerCase();
-      syncActiveButtons("store", activeVal);
-      applyFilter();
-      document.getElementById("bb-latest-deals").scrollIntoView({ behavior: "smooth" });
-    });
-  });
-
-  // Search box
-  searchInput.addEventListener("input", applyFilter);
-  searchBtn.addEventListener("click", () => {
-    applyFilter();
+    activeType = "store";
+    activeVal = storeVal;
+    applyFilter(activeType, activeVal);
     document.getElementById("bb-latest-deals").scrollIntoView({ behavior: "smooth" });
-  });
-
-  // Trending rail scroll arrows
-  const prevArrow = document.querySelector(".bb-rail-arrow.left");
-  const nextArrow = document.querySelector(".bb-rail-arrow.right");
-  if (prevArrow) prevArrow.addEventListener("click", () => rail.scrollBy({ left: -560, behavior: "smooth" }));
-  if (nextArrow) nextArrow.addEventListener("click", () => rail.scrollBy({ left: 560, behavior: "smooth" }));
-
-  // Hero slider controls
-  const slides = Array.from(document.querySelectorAll(".bb-hero-slide"));
-  const dots = Array.from(document.querySelectorAll(".bb-dot"));
-  const heroPrev = document.querySelector(".bb-prev");
-  const heroNext = document.querySelector(".bb-next");
-  let slideIdx = 0;
-
-  function showSlide(index) {
-    if (!slides.length) return;
-    slideIdx = (index + slides.length) % slides.length;
-    slides.forEach((s, i) => s.classList.toggle("active", i === slideIdx));
-    dots.forEach((d, i) => d.classList.toggle("active", i === slideIdx));
   }
 
-  dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
-  if (heroPrev) heroPrev.addEventListener("click", () => showSlide(slideIdx - 1));
-  if (heroNext) heroNext.addEventListener("click", () => showSlide(slideIdx + 1));
-  if (slides.length > 1) setInterval(() => showSlide(slideIdx + 1), 6000);
+  topNav.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      topNav.querySelectorAll("button").forEach(b => b.classList.remove("active"));
 
-  // Fetch products feed
-  fetch(feedURL + "?v=" + Date.now())
-    .then(res => {
-      if (!res.ok) throw new Error("Feed not found");
-      return res.json();
-    })
-    .then(renderProducts)
-    .catch(() => renderProducts([]));
-})();
-</script>
-</body>
-</html>
+ </nav>
+
+ <div class="bb-hero-wrap">
+
