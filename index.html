@@ -532,52 +532,48 @@
   .bb-instagram-icon { color: #e4405f; }
   .bb-telegram-icon { color: #229ed9; }
 
-    /* FOUNDER SECTION */
-    .bb-founder-section {
+    /* FOUNDER DETAILS INSIDE FOOTER */
+    .bb-footer-founder {
       display: flex;
       align-items: center;
-      gap: 28px;
-      max-width: 900px;
-      margin: 8px auto 0;
-      padding: 24px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow-sm);
+      gap: 14px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.12);
     }
-    .bb-founder-photo {
-      width: 190px;
-      height: 220px;
-      flex: 0 0 190px;
+    .bb-footer-founder-photo {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
       object-fit: cover;
       object-position: center 25%;
-      border-radius: 14px;
-      border: 4px solid #fff;
-      box-shadow: var(--shadow-md);
+      border-radius: 50%;
+      border: 2px solid var(--gold-bright);
     }
-    .bb-founder-copy h3 {
-      margin: 0 0 8px;
-      color: var(--navy-dark);
-      font-size: 21px;
-      font-weight: 800;
-    }
-    .bb-founder-role {
-      margin: 0 0 12px;
-      color: var(--navy-light);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-    }
-    .bb-founder-copy p:last-child {
-      margin: 0;
-      color: var(--text-muted);
+    .bb-footer-founder-copy h4 {
+      margin: 0 0 3px;
+      color: #fff;
       font-size: 14px;
-      line-height: 1.7;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .bb-footer-founder-role {
+      margin: 0 0 4px;
+      color: var(--gold-bright);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .bb-footer-founder-copy p:last-child {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 12px;
+      line-height: 1.55;
     }
     @media(max-width: 700px) {
-      .bb-founder-section { flex-direction: column; text-align: center; padding: 20px; gap: 16px; }
-      .bb-founder-photo { width: 170px; height: 190px; flex-basis: auto; }
+      .bb-footer-founder { align-items: flex-start; }
+      .bb-footer-founder-photo { width: 68px; height: 68px; flex-basis: 68px; }
     }
 
   </style>
@@ -704,22 +700,6 @@
     </section>
 
 
-    <!-- MEET THE FOUNDER -->
-    <section class="bb-section" id="bb-founder">
-      <div class="bb-section-heading">
-        <h2>Meet the Founder</h2>
-      </div>
-      <div class="bb-founder-section">
-        <img class="bb-founder-photo" src="/founder-vanke-bhaskar.jpeg"
-             alt="Vanke Bhaskar, Founder of BachatBlink" loading="lazy" />
-        <div class="bb-founder-copy">
-          <h3>Vanke Bhaskar</h3>
-          <p class="bb-founder-role">Founder of BachatBlink</p>
-          <p>BachatBlink was created with a simple mission: to help people save more by discovering great deals, offers, and smart shopping opportunities. Our goal is to make online savings quick, simple, and accessible to everyone.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- FOOTER -->
     <footer class="bb-footer">
       <div class="bb-footer-inner">
@@ -728,6 +708,15 @@
           <p>Your daily destination for verified online deals, lightning discounts, and smart shopping across India's leading e-commerce platforms.</p>
           <div class="bb-footer-disclosure">
             <strong>Affiliate Disclosure:</strong> BachatBlink participates in the Amazon Associates Program, Flipkart Affiliate Program, and partner networks. We may earn a commission from qualifying purchases at zero extra cost to you.
+          </div>
+          <div class="bb-footer-founder">
+            <img class="bb-footer-founder-photo" src="/founder-vanke-bhaskar.jpeg"
+                 alt="Vanke Bhaskar, Founder of BachatBlink" loading="lazy" />
+            <div class="bb-footer-founder-copy">
+              <h4>Vanke Bhaskar</h4>
+              <p class="bb-footer-founder-role">Founder of BachatBlink</p>
+              <p>Building BachatBlink to help everyone discover great deals and shop smarter.</p>
+            </div>
           </div>
         </div>
         <div>
